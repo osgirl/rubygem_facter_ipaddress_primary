@@ -17,7 +17,7 @@ ipaddress_primary => 10.10.27.133
 lib => /usr/local/lib/ruby/gems/2.1.0/gems/facter_ipaddress_primary-1.0.0.pre/lib/facter
 
 $ # No arguments returns the path where the library resides..
-$ ipaddress_primary_path facter
+$ ipaddress_primary_path
 /usr/local/lib/ruby/gems/2.1.0/gems/facter_ipaddress_primary-1.0.0.pre/lib/facter
 
 # And this can alternatively be used to add to the path in a script if you prefer that approach
