@@ -21,5 +21,5 @@ $ ipaddress_primary_path
 /usr/local/lib/ruby/gems/2.1.0/gems/facter_ipaddress_primary-1.0.0.pre/lib/facter
 
 # And this can alternatively be used to add to the path in a script if you prefer that approach
-export FACTERLIB="${FACTERLIB}:`ipaddress_primary_path`"
+export FACTERLIB="${FACTERLIB}:$(ipaddress_primary_path)"
 ```
