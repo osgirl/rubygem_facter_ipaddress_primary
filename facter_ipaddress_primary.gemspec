@@ -3,7 +3,7 @@ Gem::Specification.new do |spec|
   spec.name = File.basename(__FILE__, '.*')
   spec.files = `git ls-files -z`.split("\x0")
   spec.executables = ['ipaddress_primary_path']
-  spec.summary = 'ipaddress_primary fact for facter'
+  spec.summary = 'facter ipaddress_primary fact giving a more reliable selection for main NIC'
   spec.version = '1.0.1'
   spec.authors = ['Andrew Smith']
   spec.email = ['andrew.smith at moneysupermarket.com']
