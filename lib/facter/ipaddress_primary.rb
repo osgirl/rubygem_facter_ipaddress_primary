@@ -7,8 +7,20 @@ class AdjacentNicTool
   AWS_INSTANCE_METADATA_ADDRESS = '169.254.169.254'.freeze
 
   # The main NIC determined adjacent to the meta address
-  def self.default_nic
+  def self.default_nic_address
     adjacent_local(AWS_INSTANCE_METADATA_ADDRESS)
+  end
+
+  def self.nic_translation
+    nictable = Socket.getifaddrs.map do |nic|
+      next unless nic.addr.ipv4?
+      [nic.addr.ip_address, nic.name]
+    end
+    Hash[nictable.compact]
+  end
+
+  def self.default_nic
+    nic_translation[default_nic_address]
   end
 
   # Find closest NIC address to target if we have multiple NICs
@@ -26,6 +38,13 @@ class AdjacentNicTool
 end
 
 Facter.add(:ipaddress_primary) do
+  confine kernel: %w[Linux FreeBSD OpenBSD SunOS HP-UX Darwin GNU/kFreeBSD]
+  setcode do
+    AdjacentNicTool.default_nic_address
+  end
+end
+
+Facter.add(:primary_nic) do
   confine kernel: %w[Linux FreeBSD OpenBSD SunOS HP-UX Darwin GNU/kFreeBSD]
   setcode do
     AdjacentNicTool.default_nic
