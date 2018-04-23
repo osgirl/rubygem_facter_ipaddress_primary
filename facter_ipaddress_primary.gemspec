@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.files = `git ls-files -z`.split("\x0")
   spec.executables = ['ipaddress_primary_path']
   spec.summary = 'facter ipaddress_primary fact giving a more reliable selection for main NIC'
-  spec.version = '1.0.1'
+  spec.version = '1.1.0'
   spec.authors = ['Andrew Smith']
   spec.email = ['andrew.smith at moneysupermarket.com']
   spec.description = 'Determines more reliably primary/default NIC in multiple'\
